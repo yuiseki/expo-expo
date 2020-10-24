@@ -1,21 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+import MyHeader from './components/header/MyHeader';
+import MyDrawerContent from './components/header/MyDrawerContent';
+import MainScreen from './components/screens/MainScreen';
+import SettingsScreen from './components/screens/SettingsScreen';
+
+const Stack1 = createStackNavigator(
+  {
+    Stack1: {
+      screen: MainScreen,
+      navigationOptions: {
+        title: "Main",
+        header: MyHeader
+      }
+    },
+  }
+)
+
+const Stack2 = createStackNavigator(
+  {
+    Stack1: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: "Settings",
+        header: MyHeader
+      }
+    },
+  }
+)
+
+const Drawer = createDrawerNavigator(
+  {
+    Main: {screen:Stack1},
+    Settings: {screen:Stack2},
   },
-});
+  {
+    initialRouteName: 'Main',
+    contentComponent: MyDrawerContent
+  }
+);
+
+const App: React.FC = () => {
+  const Layout = createAppContainer(Drawer);
+  return (
+    <Layout />
+  )
+}
+export default App
