@@ -1,0 +1,61 @@
+Arguments: 
+  C:\Program Files (x86)\Nodist\v-x64\14.8.0\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Python36\Scripts\;C:\Python36\;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python38\Scripts\;C:\Python38\;C:\Program Files\Oculus\Support\oculus-runtime;C:\Program Files\ImageMagick-7.0.8-Q16;C:\tools\ruby26\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python37\Scripts\;C:\Python37\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\postgresql\10\bin;C:\ProgramData\nvm;C:\Program Files\nodejs;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Go\bin;C:\Users\yuise\AppData\Local\jdk-11.0.2\bin;C:\Users\yuise\AppData\Local\python2\scripts;C:\Users\yuise\AppData\Local\python2;C:\Program Files (x86)\Atmel\sam-ba_2.18\drv\;C:\Program Files (x86)\Atmel\sam-ba_2.18;C:\Users\yuise\.rbenv-win\bin;C:\Users\yuise\.rbenv-win\shims;_SZ    C:\Users\yuise\AppData\Local\Microsoft\WindowsApps;C:\Users\yuise\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin;C:\tools\msys64;C:\Program Files\Docker Toolbox;C:\Users\yuise\AppData\Local\Yarn\bin;C:\Users\yuise\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\yuise\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Docker Toolbox;C:\Program Files (x86)\Nodist\bin;C:\Users\yuise\AppData\Local\Android\Sdk\platform-tools;C:\Users\yuise\go\bin;C:\Program Files\OpenSSL-Win64\bin;C:\Program Files\heroku\bin;C:\Users\yuise\AppData\Local\inkdrop\bin
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  14.8.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz: Request failed "502 Bad Gateway"
+      at ResponseError.ExtendableBuiltin (C:\Program Files (x86)\Yarn\lib\cli.js:696:66)
+      at new ResponseError (C:\Program Files (x86)\Yarn\lib\cli.js:802:124)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:66009:16)
+      at Request.emit (events.js:314:20)
+      at Request.module.exports.Request.onRequestResponse (C:\Program Files (x86)\Yarn\lib\cli.js:141341:10)
+      at ClientRequest.emit (events.js:314:20)
+      at HTTPParser.parserOnIncomingClient (_http_client.js:640:27)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:119:17)
+      at HTTPParser.execute (<anonymous>)
+      at TLSSocket.socketOnData (_http_client.js:509:22)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "~39.0.2",
+      "expo-status-bar": "~1.0.2",
+      "react": "16.13.1",
+      "react-dom": "16.13.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+      "react-native-web": "~0.13.12"
+    },
+    "devDependencies": {
+      "@babel/core": "~7.9.0",
+      "@types/react": "~16.9.35",
+      "@types/react-dom": "~16.9.8",
+      "@types/react-native": "~0.63.2",
+      "typescript": "~3.9.5"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
