@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Dimensions, ActivityIndicator, ScrollView } from "react-native";
+import { View, Dimensions, ActivityIndicator, ScrollView } from "react-native";
 import { ButtonGroup, Image, Badge } from "react-native-elements";
 
 const MainScreen: React.FC = () => {
   const [imageNumIdx, setImageNumIdx] = useState<number>(3);
   const windowWidth = Dimensions.get('window').width;
   const [imageSize, setImageSize] = useState<number>(windowWidth/4);
-  const [checked, setChecked] = useState<boolean>(false);
   const icon = "https://pbs.twimg.com/profile_images/1262258309479858176/XDn-m3DI_400x400.jpg";
 
   const imagesArray = new Array(300).fill(0);
