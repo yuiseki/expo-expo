@@ -5,12 +5,14 @@ import 'firebase/firestore';
 import config from '../../config';
 
 const useTwitterAndFirebaseAuth = () => {
-  // 認証状態の確認中か否か
+  // 現在認証状態の確認中か否か
   const [signInChecking, setSignInChecking] = useState<boolean>(true);
-  // 認証済みか否か
+  // 現在認証済みか否か
   const [signedIn, setSignedIn] = useState<boolean>(false);
-  // 認証済みユーザーのtwitterのデータ
+  // 現在認証済みユーザーのTwitterのデータ
   const [twitterUser, setTwitterUser] = useState<firebase.firestore.DocumentData>();
+  // Twitterのユーザーデータを保存するfirestoreのコレクション名
+  const twitterUserCollection = 'TwitterUser';
   // react-native-simple-twitter
   const { twitter, TWModal } = useTwitter({
     onSuccess:(user, accessToken) => {
@@ -22,13 +24,10 @@ const useTwitterAndFirebaseAuth = () => {
   const setCurrentTwitterUser = async () => {
     try{
       const user = firebase.auth().currentUser;
-      console.log('updateTwitterUser: '+!!user)
       if(user){
-        //console.log(user)
-        const doc = await firebase.firestore().collection('TwitterUsers').doc(user.uid).get();
+        const doc = await firebase.firestore().collection(twitterUserCollection).doc(user.uid).get();
         if(doc){
           setTwitterUser(doc.data());
-          //console.log(doc.data());
           setSignInChecking(false);
           setSignedIn(true);
         }
@@ -41,23 +40,27 @@ const useTwitterAndFirebaseAuth = () => {
     }
   }
 
+  // useEffect(function, []) というdepsが空の呼び方をした時は
+  // このhookを使っているコンポーネントが表示される最初の一回だけ実行される
   // hook initialize
   useEffect(() => {
     // 重要！！
     let isMounted = true;
+    // 重要！！
     if(firebase.apps.length===0){
       firebase.initializeApp(config.firebase);
     }
     twitter.setConsumerKey(config.twitter.apiKey, config.twitter.apiSecret);
     const unsubscribe = firebase.auth().onAuthStateChanged(() => {
       // 重要！！
-      // isMounted === trueのときにしかsetStateするべきではない
+      // isMounted === trueのときにしかsetStateするべきではないのでsetCurrentTwitterUserも呼ぶべきではない
       if(isMounted){
         setCurrentTwitterUser();
       }
     });
     // 重要！！
-    // cleanup関数をreturnする
+    // cleanup関数を定義してreturnする
+    // cleanup関数が呼ばれる時 = このhookを使っているコンポーネントが消える時
     return () => {
       isMounted = false;
       unsubscribe();
@@ -88,7 +91,7 @@ const useTwitterAndFirebaseAuth = () => {
     const userData = Object.assign(user, accessToken);
     if(firebase.auth().currentUser){
       const uid = firebase.auth().currentUser?.uid;
-      await firebase.firestore().collection('TwitterUsers').doc(uid).set(userData, { merge: true })
+      await firebase.firestore().collection(twitterUserCollection).doc(uid).set(userData, { merge: true })
       setSignInChecking(false);
       setSignedIn(true);
     }
