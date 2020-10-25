@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTwitter } from 'react-native-simple-twitter';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
 import 'firebase/firestore';
-import config from '../../config'
-
+import config from '../../config';
 
 const useTwitterAndFirebaseAuth = () => {
   // 認証状態の確認中か否か

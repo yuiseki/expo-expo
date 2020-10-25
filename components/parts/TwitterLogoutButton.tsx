@@ -7,7 +7,7 @@ const TwitterLogoutButton:React.FC = () => {
   const { toTwitterLogout } = useTwitterAndFirebaseAuth();
   return (
     <View>
-      <Text h2 onPress={toTwitterLogout}>logout</Text>
+      <Text h4 onPress={toTwitterLogout}>logout</Text>
     </View>
   )
 }
