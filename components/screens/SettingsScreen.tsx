@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { Text, ButtonGroup, CheckBox, Divider } from "react-native-elements";
+import { createStackNavigator } from 'react-navigation-stack';
+import MyHeader from '../header/MyHeader'
 
 const SettingsScreen: React.FC = () => {
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
@@ -43,4 +45,15 @@ const SettingsScreen: React.FC = () => {
     </View>
   );
 }
-export default SettingsScreen;
+const SettingsScreenStack = createStackNavigator(
+  {
+    Stack1: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: "Settings",
+        header: MyHeader
+      }
+    },
+  }
+)
+export default SettingsScreenStack;
